@@ -1,11 +1,54 @@
-/* You can add global styles to this file, and also import other style files */
+@import "src/scss/colors.scss";
+@import "src/scss/mixins.scss";
 
 html, body { 
     height: 100%; 
+}
+
+html, body , button {
     font-family: 'Open Sans', sans-serif;
     font-family: 'Poppins', sans-serif;
 }
 
+* {
+    font-size: 1rem;
+}
+
 body { 
     margin: 0; 
+    color: $black;
+}
+
+h1 {
+    font-size: 6rem;
+    margin: 0 0 2rem;
+}
+
+.page-action-bar {
+    @include flexbox;
+    @include align-items(center);
+    gap: 2rem;
+}
+
+.empty-button {
+    background-color: transparent;
+    outline: none;
+    border: none;
+}
+
+.far-right {
+    margin-left: auto;
+}
+
+::placeholder {
+    color: $grey-light;
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: $grey-light;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: $grey-light;
 }

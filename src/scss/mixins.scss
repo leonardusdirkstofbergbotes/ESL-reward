@@ -1,0 +1,271 @@
+// Shadow
+@mixin standard-shadow {
+    -webkit-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+// Box
+@mixin box {
+    @include standard-shadow;
+    padding: 30px;
+    background-color: $white;
+    border-radius: 5px;
+}
+
+// Transformations
+@mixin scale($ratio...) {
+    -webkit-transform: scale($ratio);
+    -ms-transform: scale($ratio); // IE9 only
+    -o-transform: scale($ratio);
+    transform: scale($ratio);
+}
+
+@mixin scaleX($ratio) {
+    -webkit-transform: scaleX($ratio);
+    -ms-transform: scaleX($ratio); // IE9 only
+    -o-transform: scaleX($ratio);
+    transform: scaleX($ratio);
+}
+
+@mixin scaleY($ratio) {
+    -webkit-transform: scaleY($ratio);
+    -ms-transform: scaleY($ratio); // IE9 only
+    -o-transform: scaleY($ratio);
+    transform: scaleY($ratio);
+}
+
+@mixin transform($values) {
+    -webkit-transform: $values;
+    -ms-transform: $values; // IE9 only
+    -o-transform: $values;
+    transform: $values;
+}
+
+@mixin translate($ratio...) {
+    -webkit-transform: translate($ratio);
+    -ms-transform: translate($ratio); // IE9 only
+    -o-transform: translate($ratio);
+    transform: translate($ratio);
+}
+
+@mixin translateX($ratio) {
+    -webkit-transform: translateX($ratio);
+    -ms-transform: translateX($ratio); // IE9 only
+    -o-transform: translateX($ratio);
+    transform: translateX($ratio);
+}
+
+@mixin translateY($ratio) {
+    -webkit-transform: translateY($ratio);
+    -ms-transform: translateY($ratio); // IE9 only
+    -o-transform: translateY($ratio);
+    transform: translateY($ratio);
+}
+
+@mixin rotateX($ratio) {
+    -webkit-transform: rotateX($ratio);
+    -ms-transform: rotateX($ratio); // IE9 only
+    -o-transform: rotateX($ratio);
+    transform: rotateX($ratio);
+}
+
+@mixin rotateY($ratio) {
+    -webkit-transform: rotateY($ratio);
+    -ms-transform: rotateY($ratio); // IE9 only
+    -o-transform: rotateY($ratio);
+    transform: rotateY($ratio);
+}
+
+@mixin rotate($ratio) {
+    -webkit-transform: rotate($ratio);
+    -ms-transform: rotate($ratio); // IE9 only
+    -o-transform: rotate($ratio);
+    transform: rotate($ratio);
+}
+
+@mixin delay($seconds) {
+    -webkit-transition-delay: $seconds;
+    -moz-transition-delay: $seconds;
+    -ms-transition-delay: $seconds;
+    -o-transition-delay: $seconds;
+}
+
+@mixin transition($args...) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -ms-transition: $args;
+    -o-transition: $args;
+    transition: $args;
+}
+
+// Display Flex
+@mixin flexbox {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+// Display inline flex
+@mixin inline-flex {
+	display: -webkit-inline-box;
+	display: -webkit-inline-flex;
+	display: -moz-inline-flex;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+}
+
+// Flex Direction
+@mixin flex-direction($value: row) {
+	@if $value == row-reverse {
+		-webkit-box-direction: reverse;
+		-webkit-box-orient: horizontal;
+	} @else if $value == column {
+		-webkit-box-direction: normal;
+		-webkit-box-orient: vertical;
+	} @else if $value == column-reverse {
+		-webkit-box-direction: reverse;
+		-webkit-box-orient: vertical;
+	} @else {
+		-webkit-box-direction: normal;
+		-webkit-box-orient: horizontal;
+	}
+	-webkit-flex-direction: $value;
+	-moz-flex-direction: $value;
+	-ms-flex-direction: $value;
+	flex-direction: $value;
+}
+
+// Flex Wrap
+@mixin flex-wrap($value: nowrap) {
+	// No Webkit Box fallback.
+	-webkit-flex-wrap: $value;
+	-moz-flex-wrap: $value;
+	@if $value == nowrap {
+		-ms-flex-wrap: none;
+	} @else {
+		-ms-flex-wrap: $value;
+	}
+	flex-wrap: $value;
+}
+
+// Flexbox Order
+@mixin order($int: 0) {
+	-webkit-box-ordinal-group: $int + 1;
+	-webkit-order: $int;
+	-moz-order: $int;
+	-ms-flex-order: $int;
+	order: $int;
+}
+
+// Flexbox Grow
+@mixin flex-grow($int: 0) {
+	-webkit-box-flex: $int;
+	-webkit-flex-grow: $int;
+	-moz-flex-grow: $int;
+	-ms-flex-positive: $int;
+	flex-grow: $int;
+}
+
+// Flexbox Shrink
+@mixin flex-shrink($int: 1) {
+	-webkit-flex-shrink: $int;
+	-moz-flex-shrink: $int;
+	-ms-flex-negative: $int;
+	flex-shrink: $int;
+}
+
+// Flexbox Basis
+@mixin flex-basis($value: auto) {
+	-webkit-flex-basis: $value;
+	-moz-flex-basis: $value;
+	-ms-flex-preferred-size: $value;
+	flex-basis: $value;
+}
+
+// Flexbox Justify Content
+@mixin justify-content($value: flex-start) {
+  @if $value == flex-start {
+		-webkit-box-pack: start;
+		-ms-flex-pack: start;
+	} @else if $value == flex-end {
+		-webkit-box-pack: end;
+		-ms-flex-pack: end;
+	} @else if $value == space-between {
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
+	} @else {
+		-webkit-box-pack: $value;
+		-ms-flex-pack: $value;
+	}
+	-webkit-justify-content: $value;
+	-moz-justify-content: $value;
+	justify-content: $value;
+}
+
+// Flexbox Align Items
+@mixin align-items($value: stretch) {
+	@if $value == flex-start {
+		-webkit-box-align: start;
+		-ms-flex-align: start;
+	} @else if $value == flex-end {
+		-webkit-box-align: end;
+		-ms-flex-align: end;
+	} @else {
+		-webkit-box-align: $value;
+		-ms-flex-align: $value;
+	}
+	-webkit-align-items: $value;
+	-moz-align-items: $value;
+	align-items: $value;
+}
+
+// Flexbox Align Self
+@mixin align-self($value: auto) {
+	// No Webkit Box Fallback.
+	-webkit-align-self: $value;
+	-moz-align-self: $value;
+	@if $value == flex-start {
+		-ms-flex-item-align: start;
+	} @else if $value == flex-end {
+		-ms-flex-item-align: end;
+	} @else {
+		-ms-flex-item-align: $value;
+	}
+	align-self: $value;
+}
+
+// Flexbox Align Content
+@mixin align-content($value: stretch) {
+	// No Webkit Box Fallback.
+	-webkit-align-content: $value;
+	-moz-align-content: $value;
+	@if $value == flex-start {
+		-ms-flex-line-pack: start;
+	} @else if $value == flex-end {
+		-ms-flex-line-pack: end;
+	} @else {
+		-ms-flex-line-pack: $value;
+	}
+	align-content: $value;
+}
+
+@mixin flexcenter() {
+    @include flexbox();
+    @include justify-content(center);
+    @include align-items(center);
+}
+
+// Rem unit
+@function stripUnit($value) {
+    @return $value / ($value * 0 + 1);
+}
+@function rem($pxValue) {
+    @return #{stripUnit($pxValue) / stripUnit(16px)}rem;
+}
+
+$breakpoint-mobile: 575px;
+$breakpoint-tablet: 768px;
+$breakpoint-small-monitor: 1080px;

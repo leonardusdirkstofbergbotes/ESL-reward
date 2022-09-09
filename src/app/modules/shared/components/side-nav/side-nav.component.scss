@@ -1,0 +1,11 @@
+@import "src/scss/colors.scss";
+@import "src/scss/mixins.scss";
+
+.side-nav {
+    @include flexbox;
+    @include flex-direction(column);
+    background-color: $base;
+    padding: 1.5rem 1rem;
+    height: -webkit-fill-available;
+    overflow-y: auto;
+}

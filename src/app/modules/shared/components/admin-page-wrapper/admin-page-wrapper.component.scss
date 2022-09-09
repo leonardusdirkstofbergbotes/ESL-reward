@@ -1,0 +1,12 @@
+@import "src/scss/colors.scss";
+@import "src/scss/mixins.scss";
+
+.admin-page-wrapper {
+    @include flexbox;
+    height: 100%;
+
+    .page {
+        flex: 1;
+        padding: 2rem;
+    }
+}

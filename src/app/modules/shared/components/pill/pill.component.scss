@@ -1,0 +1,11 @@
+@import "src/scss/colors.scss";
+@import "src/scss/mixins.scss";
+
+.pill {
+    @include flexcenter;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: $base;
+    color: $white;
+    width: fit-content;
+}
