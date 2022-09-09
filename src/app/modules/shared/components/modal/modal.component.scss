@@ -1,0 +1,68 @@
+@import "src/scss/colors.scss";
+@import "src/scss/mixins.scss";
+
+.grey-background {
+    position: fixed;
+    top: 0; 
+    bottom: 0;
+    left: 0; 
+    right: 0;
+    display: none;
+    z-index: 1000;
+    overflow-y: hidden;
+    
+    &.open {
+        display: block;
+        width: 100vw;
+        height: 100%;
+        background-color:rgba(131, 131, 131, 0.65);
+    }
+}
+
+.modal {
+    @include standard-shadow;
+    opacity: 0;
+    display: none;
+    background-color: $white;
+    position: relative;
+    width: 45rem;
+    padding: 1.5rem;
+    border-radius: 1rem;
+
+    &.open {
+        opacity: 1;
+        display: block;
+        position: fixed;
+        top: 2rem;
+        gap: 1rem;
+        z-index: 1002;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    &-header {
+        text-align: center;
+
+        h3 {
+            font-size: 2rem;
+            margin: 0.5rem 0;
+        }
+
+        p {
+            font-size: 0.8rem;
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.15s ease-in-out;
+
+            &:active {
+                transform: scale(0.96);
+            }
+        }
+    }
+}

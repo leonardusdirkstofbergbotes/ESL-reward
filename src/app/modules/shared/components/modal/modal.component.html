@@ -1,0 +1,11 @@
+<div class="grey-background" [class.open]="open"></div>
+
+<div class="modal" [class.open]="open">
+    <div class="modal-header">
+        <h3>{{ title }}</h3>
+        <p>{{ subTitle }}</p>
+        <button (click)="closeModal()" class="empty-button">
+            <i class="fa-solid fa-xmark close-modal" (click)="closeModal()"></i>
+        </button>
+    </div>
+</div>

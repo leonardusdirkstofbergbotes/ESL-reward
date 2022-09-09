@@ -10,6 +10,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { ButtonComponent } from './components/button/button.component';
 import { StickerNavigatorComponent } from './components/sticker-navigator/sticker-navigator.component';
 import { FolderComponent } from './components/sticker-navigator/components/folder/folder.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 
 
@@ -23,7 +24,8 @@ import { FolderComponent } from './components/sticker-navigator/components/folde
     SearchBarComponent,
     ButtonComponent,
     StickerNavigatorComponent,
-    FolderComponent
+    FolderComponent,
+    ModalComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +37,8 @@ import { FolderComponent } from './components/sticker-navigator/components/folde
     PillComponent,
     SearchBarComponent,
     ButtonComponent,
-    StickerNavigatorComponent
+    StickerNavigatorComponent,
+    ModalComponent
   ]
 })
 export class SharedModule { }
