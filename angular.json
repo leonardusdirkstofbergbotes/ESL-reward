@@ -109,5 +109,7 @@
       }
     }
   },
-  "defaultProject": "ESL-reward"
+  "cli": {
+    "analytics": false
+  }
 }
