@@ -4,9 +4,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { StickersRoutingModule } from './stickers-routing.module';
+import { StickersComponent } from './stickers.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    StickersComponent
+  ],
   imports: [
     CommonModule,
     StickersRoutingModule,
