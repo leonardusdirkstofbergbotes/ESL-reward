@@ -4,7 +4,6 @@
 .folder {
     @include flexbox;
     @include align-items(center);
-    margin-top: 1rem;
 
     svg {
         font-size: 2rem;

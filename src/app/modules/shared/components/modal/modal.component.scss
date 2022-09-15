@@ -38,10 +38,12 @@
         z-index: 1002;
         left: 50%;
         transform: translateX(-50%);
+        max-height: 90vh;
     }
 
     &-header {
         text-align: center;
+        max-height: 20vh;
 
         h3 {
             font-size: 2rem;
@@ -65,11 +67,19 @@
             }
         }
     }
+
+    &-content {
+        margin: 3rem 0;
+        max-height: 60vh;
+        overflow-y: auto;
+    }
+
     &-buttons {
         @include flexbox;
         @include align-items(center);
         margin-top: 3rem;
         gap: 1rem;
+        max-height: 10vh;
 
         .right {
             margin-left: auto;

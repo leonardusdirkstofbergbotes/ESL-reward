@@ -1,0 +1,26 @@
+@import "src/scss/colors.scss";
+@import "src/scss/mixins.scss";
+
+.input-wrapper {
+    @include flexbox;
+    @include flex-direction(column);
+    row-gap: 0.2rem;
+
+    label {
+        @include flexbox;
+        @include align-items(center);
+        gap: 0.5rem;
+        margin-left: 0.1rem;
+    }
+
+    input {
+        border: 1px solid $grey;
+        padding: 1rem;
+        border-radius: 0.5rem;
+
+        &:focus {
+            outline: none;
+            border-color: $base;
+        }
+    }
+}

@@ -1,0 +1,11 @@
+<div class="tooltip">
+    <div (mouseenter)="showTooltip = true" (mouseleave)="showTooltip = false">
+        <i class="fa-solid fa-circle-question"></i>
+    </div>
+
+    <div class="tooltip-modal" [class.show]="showTooltip">
+        {{ tooltipText }}
+
+        <div class="arrow"></div>
+    </div>
+</div>

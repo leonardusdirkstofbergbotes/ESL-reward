@@ -23,9 +23,7 @@ button {
 
     &.primary, &.secondary {
         &:hover {
-            box-shadow: 1px -1px 10px -2px rgba(115,110,110,0.75);
-            -webkit-box-shadow: 1px -1px 10px -2px rgba(115,110,110,0.75);
-            -moz-box-shadow: 1px -1px 10px -2px rgba(115,110,110,0.75);
+            @include standard-shadow;
         }
 
         &:disabled {

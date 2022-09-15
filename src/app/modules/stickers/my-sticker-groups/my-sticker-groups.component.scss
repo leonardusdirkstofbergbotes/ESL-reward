@@ -1,0 +1,16 @@
+@import "src/scss/colors.scss";
+@import "src/scss/mixins.scss";
+
+app-modal {
+    .navigator-wrapper {
+        background-color: $grey-light;
+        border-radius: 0.5rem;
+        border: 1px solid $grey;
+    }
+
+    .form {
+        @include flexbox;
+        @include flex-direction(column);
+        row-gap: 2rem;
+    }
+}

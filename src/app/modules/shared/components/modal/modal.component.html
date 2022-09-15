@@ -11,6 +11,10 @@
 
     <app-modal-tabs *ngIf="tabs.length > 0" [tabs]="tabs" [activeTab]="activeTab"></app-modal-tabs>
 
+    <div class="modal-content">
+        <ng-content></ng-content>
+    </div>
+
     <div class="modal-buttons">
         <app-button (click)="previousTab()" type="secondary" *ngIf="tabs.length > 0 && activeTab > 1">Previous</app-button>
         <app-button (click)="nextTab()" class="right" *ngIf="tabs.length > 0 && activeTab !== lastTab">Next</app-button>

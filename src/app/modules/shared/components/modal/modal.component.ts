@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-modal',
@@ -11,6 +11,7 @@ export class ModalComponent implements OnInit {
   @Input() subTitle: string = '';
   @Input() tabs: string[] = [];
   @Input() activeTab: number = 0;
+  @Output() tabChanged = new EventEmitter<number>();
 
   open: boolean = false;
   lastTab: number = 0;
@@ -32,12 +33,14 @@ export class ModalComponent implements OnInit {
   nextTab () {
     if (this.activeTab < this.tabs.length) {
       this.activeTab += 1;
+      this.tabChanged.emit(this.activeTab);
     }
   }
 
   previousTab () {
     if (this.activeTab != 0) {
       this.activeTab -= 1;
+      this.tabChanged.emit(this.activeTab);
     }
   }
 }

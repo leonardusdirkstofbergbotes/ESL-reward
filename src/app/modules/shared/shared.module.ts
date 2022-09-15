@@ -12,6 +12,8 @@ import { StickerNavigatorComponent } from './components/sticker-navigator/sticke
 import { FolderComponent } from './components/sticker-navigator/components/folder/folder.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { ModalTabsComponent } from './components/modal/components/modal-tabs/modal-tabs.component';
+import { InputComponent } from './components/input/input.component';
+import { ToolTipComponent } from './components/input/components/tool-tip/tool-tip.component';
 
 
 
@@ -27,7 +29,9 @@ import { ModalTabsComponent } from './components/modal/components/modal-tabs/mod
     StickerNavigatorComponent,
     FolderComponent,
     ModalComponent,
-    ModalTabsComponent
+    ModalTabsComponent,
+    InputComponent,
+    ToolTipComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +44,8 @@ import { ModalTabsComponent } from './components/modal/components/modal-tabs/mod
     SearchBarComponent,
     ButtonComponent,
     StickerNavigatorComponent,
-    ModalComponent
+    ModalComponent,
+    InputComponent
   ]
 })
 export class SharedModule { }
