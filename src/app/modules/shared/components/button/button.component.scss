@@ -2,27 +2,46 @@
 @import "src/scss/mixins.scss";
 
 button {
-    background-color: $base;
-    color: $white;
     border-radius: 0.5rem;
     padding: 0.5rem 1rem;
     width: fit-content;
-    border: none;
     cursor: pointer;
     transition: box-shadow 0.3s ease-in-out, transform 0.15s ease-in-out;
+    min-width: 7rem;
 
-    &:hover {
-        box-shadow: 1px -1px 10px -2px rgba(115,110,110,0.75);
-        -webkit-box-shadow: 1px -1px 10px -2px rgba(115,110,110,0.75);
-        -moz-box-shadow: 1px -1px 10px -2px rgba(115,110,110,0.75);
+    &.primary {
+        background-color: $base;
+        color: $white;
+        border: 1px solid $base;
+    }
+
+    &.secondary {
+        background-color: $white;
+        color: $base;
+        border: 1px solid $base;
+    }
+
+    &.primary, &.secondary {
+        &:hover {
+            box-shadow: 1px -1px 10px -2px rgba(115,110,110,0.75);
+            -webkit-box-shadow: 1px -1px 10px -2px rgba(115,110,110,0.75);
+            -moz-box-shadow: 1px -1px 10px -2px rgba(115,110,110,0.75);
+        }
+
+        &:disabled {
+            background-color: $grey-light;
+            pointer-events: none;
+        }
+    }
+
+    &.link {
+        background-color: none;
+        border: transparent;
+        outline: none;
+        color: $base;
     }
 
     &:active {
         transform: scale(0.96);
-    }
-
-    &:disabled {
-        background-color: $grey-light;
-        pointer-events: none;
     }
 }

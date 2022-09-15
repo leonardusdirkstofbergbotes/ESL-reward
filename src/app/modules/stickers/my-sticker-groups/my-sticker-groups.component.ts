@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyStickerGroupsComponent implements OnInit {
 
+  formTabs: string[] = ["Select stickers", 'Group Details'];
+
   constructor() { }
 
   ngOnInit(): void {

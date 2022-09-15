@@ -1,0 +1,6 @@
+<div class="tabs" *ngIf="tabs.length > 0">
+    <div class="tab" *ngFor="let tab of tabs; let isFirst = first; let isLast = last; let index = index" [class.active]="activeTab >= (index + 1)">
+        <span>{{tab}}</span>
+        <div [class.first]="isFirst" [class.last]="isLast"></div>
+    </div>
+</div>

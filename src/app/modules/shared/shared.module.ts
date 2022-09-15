@@ -11,6 +11,7 @@ import { ButtonComponent } from './components/button/button.component';
 import { StickerNavigatorComponent } from './components/sticker-navigator/sticker-navigator.component';
 import { FolderComponent } from './components/sticker-navigator/components/folder/folder.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { ModalTabsComponent } from './components/modal/components/modal-tabs/modal-tabs.component';
 
 
 
@@ -25,7 +26,8 @@ import { ModalComponent } from './components/modal/modal.component';
     ButtonComponent,
     StickerNavigatorComponent,
     FolderComponent,
-    ModalComponent
+    ModalComponent,
+    ModalTabsComponent
   ],
   imports: [
     CommonModule,
