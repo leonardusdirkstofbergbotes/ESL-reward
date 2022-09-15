@@ -1,8 +1,8 @@
 <nav class="side-nav">
     <app-menu-item>Stickers</app-menu-item>
-    <app-sub-menu-item routerLink="my-stickers">My stickers</app-sub-menu-item>
-    <app-sub-menu-item routerLink="my-sticker-groups">My sticker groups</app-sub-menu-item>
-    <app-sub-menu-item routerLink="community-sticker-groups">Community sticker groups</app-sub-menu-item>
+    <app-sub-menu-item routerLink="../my-stickers" [relativeTo]="this.route">My stickers</app-sub-menu-item>
+    <app-sub-menu-item routerLink="../my-sticker-groups" [relativeTo]="this.route">My sticker groups</app-sub-menu-item>
+    <app-sub-menu-item routerLink="../community-sticker-groups" [relativeTo]="this.route">Community sticker groups</app-sub-menu-item>
     <app-menu-item>Stickers</app-menu-item>
     <app-sub-menu-item>My stickers</app-sub-menu-item>
     <app-sub-menu-item>My sticker groups</app-sub-menu-item>
