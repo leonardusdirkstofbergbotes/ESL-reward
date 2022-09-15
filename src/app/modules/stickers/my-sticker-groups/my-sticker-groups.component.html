@@ -17,9 +17,9 @@
         </div>
 
         <div class="form" *ngIf="currentTab === 2">
-            <app-input>Group name</app-input>
-            <app-input tooltipText="This will be used later to do some thing">Tags</app-input>
-            <app-input tooltipText="Let other teachers use this">Make group public</app-input>
+            <app-input name="group-name">Group name</app-input>
+            <app-tags-input placeholder='use the "Enter" symbol to add new tag' tooltipText="Tags is used as a search indexer" name="tags">Tags</app-tags-input>
+            <app-input name="public" tooltipText="Let other teachers use this">Make group public</app-input>
         </div>
     </app-modal>
 </app-admin-page-wrapper>

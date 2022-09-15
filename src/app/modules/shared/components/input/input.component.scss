@@ -13,9 +13,20 @@
         margin-left: 0.1rem;
     }
 
-    input {
+    .input-box {
+        @include flexbox; 
+        @include align-items(center);
+        @include flex-wrap(wrap);
         border: 1px solid $grey;
-        padding: 1rem;
+        border-radius: 0.5rem;
+        padding: 0.7rem;
+        gap: 0.5rem;
+    }
+
+    input {
+        font-size: 1.2rem;
+        flex: 1;
+        border: none;
         border-radius: 0.5rem;
 
         &:focus {

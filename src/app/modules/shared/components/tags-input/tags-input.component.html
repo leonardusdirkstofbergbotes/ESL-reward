@@ -1,0 +1,13 @@
+<app-input [placeholder]="tags.length > 0 ? '' : placeholder" [name]="name" [control]="control" [tooltipText]="tooltipText" (keydown)="processTextChange($event)">
+    <ng-content></ng-content>
+
+    <div class="tags before-input-content" *ngIf="tags.length > 0">
+        <div class="tag" *ngFor="let tag of tags">
+            <span>{{ tag }}</span>
+            <div (click)="removeTag(tag)">
+                <i class="fa-solid fa-xmark" ></i>
+            </div>
+        </div>
+    </div>
+</app-input>
+

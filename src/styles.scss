@@ -41,14 +41,14 @@ h1 {
 }
 
 ::placeholder {
-    color: $grey-light;
+    color: $grey;
     opacity: 1; /* Firefox */
 }
 
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: $grey-light;
+    color: $grey;
 }
 
 ::-ms-input-placeholder { /* Microsoft Edge */
-    color: $grey-light;
+    color: $grey;
 }

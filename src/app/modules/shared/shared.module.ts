@@ -14,8 +14,8 @@ import { ModalComponent } from './components/modal/modal.component';
 import { ModalTabsComponent } from './components/modal/components/modal-tabs/modal-tabs.component';
 import { InputComponent } from './components/input/input.component';
 import { ToolTipComponent } from './components/input/components/tool-tip/tool-tip.component';
-
-
+import { TagsInputComponent } from './components/tags-input/tags-input.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,11 +31,14 @@ import { ToolTipComponent } from './components/input/components/tool-tip/tool-ti
     ModalComponent,
     ModalTabsComponent,
     InputComponent,
-    ToolTipComponent
+    ToolTipComponent,
+    TagsInputComponent
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     SideNavComponent,
@@ -45,7 +48,8 @@ import { ToolTipComponent } from './components/input/components/tool-tip/tool-ti
     ButtonComponent,
     StickerNavigatorComponent,
     ModalComponent,
-    InputComponent
+    InputComponent,
+    TagsInputComponent
   ]
 })
 export class SharedModule { }

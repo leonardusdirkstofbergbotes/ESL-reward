@@ -1,0 +1,23 @@
+@import "src/scss/colors.scss";
+@import "src/scss/mixins.scss";
+
+.tags {
+    @include flexbox;
+    @include align-items(center);
+    @include flex-wrap(wrap);
+    gap: 0.5rem;
+
+    .tag {
+        @include flexbox;
+        @include align-items(center);
+        gap: 0.5rem;
+        border-radius: 0.5rem;
+        background-color: $grey-light;
+        padding: 0.2rem 0.5rem;
+        border: 1px solid $grey;
+
+        svg {
+            cursor: pointer;
+        }
+    }
+}

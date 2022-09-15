@@ -4,5 +4,8 @@
         <app-tool-tip *ngIf="tooltipText" [tooltipText]="tooltipText"></app-tool-tip>
     </label>
 
-    <input />
+    <div class="input-box">
+        <ng-content select=".before-input-content"></ng-content>
+        <input [type]="type" [placeholder]="placeholder" [formControl]="control" [name]="name" />
+    </div>
 </div>
