@@ -1,0 +1,28 @@
+@import "src/scss/colors.scss";
+@import "src/scss/mixins.scss";
+
+.snack-bar {
+    @include standard-shadow;
+    @include transition(visibility 0.3s ease-in-out, opacity 0.3s ease-in-out, transform 0.3s ease-in-out);
+    @include flexbox;
+    @include align-items(center);
+    gap: 1rem;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(10rem);
+
+    svg {
+        cursor: pointer;
+    }
+
+    &.open {
+        visibility: visible;
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

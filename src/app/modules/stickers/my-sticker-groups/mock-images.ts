@@ -12,7 +12,7 @@ export const MOCK_IMAGES: object[] = [{
         'assets/images/stickers/9.webp',
         'assets/images/stickers/10.png'
     ],
-    tags: ['hhh', 'gggg', 'llll', 'gggg'],
+    tags: ['hhh', 'gggg', 'llll', 'hyjyj'],
     public: false
 },{
     name: 'Group 2',
@@ -28,7 +28,7 @@ export const MOCK_IMAGES: object[] = [{
         'assets/images/stickers/9.webp',
         'assets/images/stickers/10.png'
     ],
-    tags: ['hhh', 'gggg', 'llll', 'gggg'],
+    tags: ['hhh', 'gggg', 'llll', 'hyjyj'],
     public: false
 }, {
     name: 'Group 2',
@@ -44,7 +44,7 @@ export const MOCK_IMAGES: object[] = [{
         'assets/images/stickers/9.webp',
         'assets/images/stickers/10.png'
     ],
-    tags: ['hhh', 'gggg', 'llll', 'gggg'],
+    tags: ['hhh', 'gggg', 'llll', 'hyjyj'],
     public: false
 },{
     name: 'Group 2',
@@ -60,6 +60,6 @@ export const MOCK_IMAGES: object[] = [{
         'assets/images/stickers/9.webp',
         'assets/images/stickers/10.png'
     ],
-    tags: ['hhh', 'gggg', 'llll', 'gggg'],
+    tags: ['hhh', 'gggg', 'llll', 'hyjyj'],
     public: false
 }]

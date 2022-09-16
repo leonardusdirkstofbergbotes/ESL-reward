@@ -1,9 +1,10 @@
+import { SnackBarService } from './../../shared/components/snack-bar/snack-bar.service';
 import { StickerGroup } from './../../../models/sticker-group';
 import { ModalComponent } from './../../shared/components/modal/modal.component';
 import { StickerGroupService } from './../../shared/services/sticker-group/sticker-group.service';
 import { MOCK_IMAGES } from './mock-images';
 import { Component, ViewChild } from '@angular/core';
-import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms';
+import { FormControl, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-my-sticker-groups',
@@ -27,6 +28,7 @@ export class MyStickerGroupsComponent {
 
   constructor (
     private _stickerGroupService: StickerGroupService,
+    private _snackbarService: SnackBarService,
     public formBuilder: FormBuilder
   ) {
     this._stickerGroupService.edit.subscribe((stickerGroup: StickerGroup) => {
@@ -37,6 +39,7 @@ export class MyStickerGroupsComponent {
       }
 
       this.groupForm.openModal();
+      this._snackbarService.notify('testing', 'success');
     })
   }
 }

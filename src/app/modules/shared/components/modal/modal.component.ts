@@ -28,6 +28,7 @@ export class ModalComponent implements OnInit {
 
   closeModal () {
     this.open = false;
+    this.resetTabData();
   }
 
   nextTab () {
@@ -35,6 +36,10 @@ export class ModalComponent implements OnInit {
       this.activeTab += 1;
       this.tabChanged.emit(this.activeTab);
     }
+  }
+
+  resetTabData () {
+    this.activeTab = 0;
   }
 
   previousTab () {
