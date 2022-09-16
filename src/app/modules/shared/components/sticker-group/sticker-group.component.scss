@@ -1,0 +1,71 @@
+@import "src/scss/colors.scss";
+@import "src/scss/mixins.scss";
+
+.sticker-group {
+    position: relative;
+
+    &:hover > .image-box {
+        @include standard-shadow;
+        transform: scale(1.02);
+    }
+    
+    .image-box {
+        @include transition(box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out);
+        border: 1px solid $grey;
+        display: grid;
+        grid-template-columns: auto auto auto auto auto;
+        padding: 1rem;
+        border-radius: 0.5rem;
+
+        img {
+            max-width: 4rem;
+        }
+    }
+
+    .actions {
+        @include flexbox;
+        @include flex-direction(column);
+        @include transition(visibility 0.3s ease-in-out, opacity 0.3s ease-in-out);
+        gap: 1rem;
+        position: absolute;
+        right: -0.8rem;
+        top: 1.8rem;
+        opacity: 0;
+        visibility: hidden;
+
+        &.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        div {
+            @include flexcenter;
+            @include transition(transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out);
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            
+            &:hover {
+                transform: scale(1.04);
+                @include standard-shadow;
+            }
+        }
+
+        svg {
+            color: $white;
+            font-size: 1.5rem;            
+            cursor: pointer;
+        }
+
+        &-play {
+            background-color: $success-color;
+        }
+
+        &-edit {
+            background-color: $tooltip-color;
+        }
+
+        &-delete {
+            background-color: $error-color;
+        }
+    }
+}

@@ -17,9 +17,15 @@
         </div>
 
         <div class="form" *ngIf="currentTab === 2">
-            <app-input name="group-name">Group name</app-input>
-            <app-tags-input placeholder='use the "Enter" symbol to add new tag' tooltipText="Tags is used as a search indexer" name="tags">Tags</app-tags-input>
-            <app-input name="public" tooltipText="Let other teachers use this">Make group public</app-input>
+            <app-input [control]="groupFormData.controls.name" name="name">Group name</app-input>
+            <app-tags-input placeholder='use the "Enter" symbol to add new tag' [tags]="tags" tooltipText="Tags is used as a search indexer" name="tags">Tags</app-tags-input>
+            <app-input name="public" [control]="groupFormData.controls.public" tooltipText="Let other teachers use this">Make group public</app-input>
         </div>
     </app-modal>
+
+    <div class="groups">
+        <div *ngFor="let group of groups" class="group">
+            <app-sticker-group [stickerGroup]="group"></app-sticker-group>
+        </div>
+    </div>
 </app-admin-page-wrapper>

@@ -6,6 +6,6 @@
 
     <div class="input-box">
         <ng-content select=".before-input-content"></ng-content>
-        <input [type]="type" [placeholder]="placeholder" [formControl]="control" [name]="name" />
+        <input [type]="type" [placeholder]="placeholder" [formControl]="$any(control)" [name]="name" />
     </div>
 </div>

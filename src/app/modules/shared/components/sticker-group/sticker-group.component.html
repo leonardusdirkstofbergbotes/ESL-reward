@@ -1,0 +1,18 @@
+<div class="sticker-group" (mouseenter)="showActionButtons = true" (mouseleave)="showActionButtons = false">
+    <span>{{stickerGroup.name}}</span>
+    <div class="image-box">
+        <img *ngFor="let image of stickerGroup.images" [src]="image">
+    </div>
+
+    <div class="actions" [class.open]="showActionButtons">
+        <div class="actions-play">
+            <i class="fa-solid fa-play"></i>
+        </div>
+        <div class="actions-edit" (click)="editGroup()">
+            <i class="fa-solid fa-pen"></i>
+        </div>
+        <div class="actions-delete">
+            <i class="fa-solid fa-trash"></i>
+        </div>
+    </div>
+</div>

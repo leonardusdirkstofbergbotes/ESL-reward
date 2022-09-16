@@ -1,5 +1,5 @@
 import { InputComponent } from './../input/input.component';
-import { Component, OnChanges, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-tags-input',
@@ -11,10 +11,11 @@ export class TagsInputComponent extends InputComponent {
   @Input() tags: string[] = [];
   
   processTextChange (value: any) {
+    console.log(this.control);
     if (value.key === 'Enter' && this.control.value !== '') {
       if (!this.tags.includes(this.control.value)) {
         this.tags.push(this.control.value);
-        this.control.setValue('');
+        this.control.setValue(this.tags);
       }
       else {
         // raise error;

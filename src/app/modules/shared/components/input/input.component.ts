@@ -1,6 +1,5 @@
-import { SimpleChanges } from '@angular/core';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-input',
@@ -12,7 +11,7 @@ export class InputComponent implements OnInit {
   @Input() tooltipText: string | null = null;
   @Input() type: string = 'text';
   @Input() placeholder: string = '';
-  @Input() control: FormControl = new FormControl();
+  @Input() control: AbstractControl = new FormControl();
   @Input() name!: string;
   @Output() valueChanged = new EventEmitter();
 

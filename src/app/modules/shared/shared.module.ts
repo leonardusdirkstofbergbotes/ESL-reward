@@ -16,6 +16,7 @@ import { InputComponent } from './components/input/input.component';
 import { ToolTipComponent } from './components/input/components/tool-tip/tool-tip.component';
 import { TagsInputComponent } from './components/tags-input/tags-input.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { StickerGroupComponent } from './components/sticker-group/sticker-group.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     ModalTabsComponent,
     InputComponent,
     ToolTipComponent,
-    TagsInputComponent
+    TagsInputComponent,
+    StickerGroupComponent
   ],
   imports: [
     CommonModule,
@@ -49,7 +51,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     StickerNavigatorComponent,
     ModalComponent,
     InputComponent,
-    TagsInputComponent
+    TagsInputComponent,
+    StickerGroupComponent
   ]
 })
 export class SharedModule { }
