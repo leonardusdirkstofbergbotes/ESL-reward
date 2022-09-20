@@ -42,4 +42,4 @@ testem.log
 Thumbs.db
 
 # Explicitly excluded files and folders
-src/app/configs/s3-details.ts
+**/configs/s3-details.ts
