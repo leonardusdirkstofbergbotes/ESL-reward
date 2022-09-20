@@ -17,6 +17,7 @@ import { ToolTipComponent } from './components/input/components/tool-tip/tool-ti
 import { TagsInputComponent } from './components/tags-input/tags-input.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { StickerGroupComponent } from './components/sticker-group/sticker-group.component';
+import { FileDropPoolComponent } from './components/file-drop-pool/file-drop-pool.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { StickerGroupComponent } from './components/sticker-group/sticker-group.
     InputComponent,
     ToolTipComponent,
     TagsInputComponent,
-    StickerGroupComponent
+    StickerGroupComponent,
+    FileDropPoolComponent
   ],
   imports: [
     CommonModule,
@@ -52,7 +54,8 @@ import { StickerGroupComponent } from './components/sticker-group/sticker-group.
     ModalComponent,
     InputComponent,
     TagsInputComponent,
-    StickerGroupComponent
+    StickerGroupComponent,
+    FileDropPoolComponent
   ]
 })
 export class SharedModule { }

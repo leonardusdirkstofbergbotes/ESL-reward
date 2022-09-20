@@ -30,6 +30,8 @@ h1 {
     gap: 2rem;
 }
 
+// re-usable classes
+
 .empty-button {
     background-color: transparent;
     outline: none;
@@ -38,6 +40,12 @@ h1 {
 
 .far-right {
     margin-left: auto;
+}
+
+.flex {
+    @include flexbox;
+    @include align-items(center);
+    gap: 1rem;
 }
 
 ::placeholder {

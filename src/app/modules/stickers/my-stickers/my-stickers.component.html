@@ -5,10 +5,19 @@
         <div class="page-action-bar">
             <app-pill>1534 stickers</app-pill>
             <app-search-bar placeholder="search for stickers / folders"></app-search-bar>
+            <div class="far-right">
+                <app-button (click)="stickerModal.openModal()">Add stickers</app-button>
+            </div>
         </div>
 
         <div class="folder-wrapper">
             <app-sticker-navigator></app-sticker-navigator>
         </div>
     </div>
+
+    <app-modal #stickerModal title="Add new stickers" subTitle="Stickers are basically images that will be used through out the entire app to play games and create rewards. These stickers will later be grouped together">
+        <div class="drop-pool-wrapper">
+            <app-file-drop-pool></app-file-drop-pool>
+        </div>
+    </app-modal>
 </app-admin-page-wrapper>

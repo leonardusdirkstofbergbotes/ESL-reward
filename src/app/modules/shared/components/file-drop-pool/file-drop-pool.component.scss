@@ -1,0 +1,66 @@
+@import "src/scss/colors.scss";
+@import "src/scss/mixins.scss";
+
+.drop-pool {
+
+    &-wrapper {
+        @include flexbox;
+        @include flex-direction(column);
+        row-gap: 0.5rem;
+        padding: 1.5rem;
+        border: 2px dashed $base;
+        border-radius: 0.5rem;
+        background-color: lighten($base, 30%);
+        text-align: center;
+
+        svg {
+            color: $base;
+            font-size: 2rem;
+        }
+    }
+
+    .preview-wrapper {
+        @include flexbox;
+        @include flex-direction(column);
+        row-gap: 1.5rem;
+        margin: 1.5rem 0;
+
+        .errors {
+            color: $error-color;
+        }
+
+        
+        .files-counter {
+            @include flexbox;
+            @include justify-content(space-between);
+            color: $grey;
+            padding: 0 0.5rem;
+
+            .errors {
+                color: $error-color;
+                cursor: pointer;
+            }
+        }
+
+        .preview {
+            @include flexbox;
+            @include align-items(center);
+            gap: 1rem;
+            border: 1px solid $grey;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            
+            img {
+                width: 5rem;
+            }
+
+            &.error {
+                border-color: $error-color;
+
+                span {
+                    color: $error-color;
+                }
+            }
+        }
+    }   
+}

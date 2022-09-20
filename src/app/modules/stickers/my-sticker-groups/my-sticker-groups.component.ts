@@ -3,15 +3,16 @@ import { StickerGroup } from './../../../models/sticker-group';
 import { ModalComponent } from './../../shared/components/modal/modal.component';
 import { StickerGroupService } from './../../shared/services/sticker-group/sticker-group.service';
 import { MOCK_IMAGES } from './mock-images';
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { FormControl, FormBuilder } from '@angular/forms';
+
 
 @Component({
   selector: 'app-my-sticker-groups',
   templateUrl: './my-sticker-groups.component.html',
   styleUrls: ['./my-sticker-groups.component.scss']
 })
-export class MyStickerGroupsComponent {
+export class MyStickerGroupsComponent implements OnInit {
 
   @ViewChild('groupCRUDModal') groupForm!: ModalComponent;
   formTabs: string[] = ["Select stickers", 'Group Details'];
@@ -42,4 +43,13 @@ export class MyStickerGroupsComponent {
       this._snackbarService.notify('testing', 'success');
     })
   }
+
+  ngOnInit(): void {
+    
+  }
+
+  
+  // myDropzone.on("addedfile", file => {
+  //   console.log(`File added: ${file.name}`);
+  // });
 }
