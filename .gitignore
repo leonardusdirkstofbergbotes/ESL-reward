@@ -43,3 +43,4 @@ Thumbs.db
 
 # Explicitly excluded files and folders
 src/app/configs/s3-details.ts
+src/app/configs/firebase.ts
