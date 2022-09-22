@@ -6,6 +6,7 @@
     &-wrapper {
         @include flexbox;
         @include flex-direction(column);
+        @include align-items(center);
         row-gap: 0.5rem;
         padding: 1.5rem;
         border: 2px dashed $base;
@@ -19,14 +20,67 @@
         }
     }
 
+    #drop-pool-browse-button {
+        border-radius: 0.5rem;
+        padding: 0.5rem 1rem;
+        width: fit-content;
+        cursor: pointer;
+        transition: box-shadow 0.3s ease-in-out, transform 0.15s ease-in-out;
+        min-width: 7rem;
+    
+        &.primary {
+            background-color: $base;
+            color: $white;
+            border: 1px solid $base;
+        }
+    
+        &.secondary {
+            background-color: $white;
+            color: $base;
+            border: 1px solid $base;
+        }
+    
+        &.primary, &.secondary {
+            &:hover {
+                @include standard-shadow;
+            }
+    
+            &:disabled {
+                background-color: $grey-light;
+                pointer-events: none;
+            }
+        }
+    
+        &.link {
+            background-color: none;
+            border: transparent;
+            outline: none;
+            color: $base;
+        }
+    
+        &:active {
+            transform: scale(0.96);
+        }
+    }
+
+    .general-errors {
+        color: $error-color;
+    }
+
     .preview-wrapper {
         @include flexbox;
         @include flex-direction(column);
-        row-gap: 1.5rem;
+        row-gap: 1rem;
         margin: 1.5rem 0;
+        margin-bottom: 0.5rem;
 
         .errors {
             color: $error-color;
+        }
+
+        &.error-wrapper {
+            margin: 0;
+            margin-top: 2rem;
         }
 
         
@@ -47,11 +101,38 @@
             @include align-items(center);
             gap: 1rem;
             border: 1px solid $grey;
-            padding: 0.5rem;
+            padding-right: 0.5rem;
             border-radius: 0.5rem;
             
             img {
-                width: 5rem;
+                width: 6rem;
+                border-radius: 0.5rem;
+                pointer-events: none;
+            }
+
+            &-details {
+                width: 100%;
+            }
+
+            &-name {
+                input {
+                    font-size: 1.5rem;
+                    width: 90%;
+                    outline: none;
+                    border: none;
+                    font-family: 'Open Sans', sans-serif;
+                    font-family: 'Poppins', sans-serif;
+                    color: $black;
+                
+                    &:focus {
+                        color: black;
+                        font-weight: 700;
+                    }
+                }
+
+                small {
+                    font-size: 0.9rem;
+                }
             }
 
             &.error {
@@ -61,6 +142,28 @@
                     color: $error-color;
                 }
             }
+
+            .delete-button {
+                outline: none;
+                border: transparent;
+                background-color: transparent;
+                margin-left: auto;
+
+                svg {
+                    @include transition(color 0.2s ease-in-out);
+                    font-size: 2rem;
+                    color: lighten($error-color, 20%);
+                    cursor: pointer;
+
+                    &:hover {
+                        color: $error-color;
+                    }
+                }
+
+                &:active {
+                    transform: scale(0.96);
+                }
+            }
         }
-    }   
+    } 
 }

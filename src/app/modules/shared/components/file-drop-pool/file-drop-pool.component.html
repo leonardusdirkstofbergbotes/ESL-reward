@@ -1,35 +1,45 @@
 <div class="drop-pool" (drop)="dropHandler($event)" ondragenter="event.stopPropagation(); event.preventDefault();" ondragover="event.stopPropagation(); event.preventDefault();">
-    <!-- <app-input-error></app-input-error> -->
     <div class="drop-pool-wrapper">
-        <i class="fa-solid fa-cloud-arrow-up"></i>
-        <span>Drag and drop files or folders here</span>
+        <i class="fa-solid fa-cloud-arrow-up"></i> <!-- font awesome icon needs to be removed to avoid dependency-->
+        <span>Drag and drop your files here</span>
         <span>OR</span>
         <input #fileUpload type="file" style="display: none;" [accept]="acceptedFormats" (change)="fileChanged($event)" [multiple]="allowMultiple">
-        <app-button (click)="fileUpload.click()">Browse PC</app-button>
+        <button id="drop-pool-browse-button" class="primary" (click)="fileUpload.click()">Browse PC</button> <!-- normal button to avoid dependency-->
+    </div>
+    <div class="general-errors" *ngIf="generalErrorMessage">
+        {{ generalErrorMessage }}
     </div>
     <div *ngIf="filesReadyForUpload.length > 0" class="preview-wrapper">
         <div class="files-counter" *ngIf="allowMultiple && filesReadyForUpload.length > 0">
             <span>{{filesReadyForUpload.length}} / {{maxFiles}} files ready for upload</span>
-            <span (click)="errorWrapper.scrollIntoView({behavior: 'smooth'})" *ngIf="filesWithErrors.length > 0" class="errors">{{ filesWithErrors.length }} files with errors</span>
         </div>
         <div *ngFor="let file of filesReadyForUpload; let index = index" class="preview">
             <img [src]="generatePreviewUrl(file)" alt="preview image" #previewImage>
 
-            <div>
-                <div class="preview__name">{{file?.name}}</div>
-                <div class="preview__size">{{humanFileSize(file?.size)}}</div>
+            <div class="preview-details">
+                <div class="preview-name">
+                    <input type="text" [value]="fileNameChanges[index].newName" (change)="updateName(index, $event)" />
+                </div>
+                <div class="flex">
+                    <small class="preview-size">{{humanFileSize(file.size)}}</small>
+                    <span class="errors">{{ fileNameChanges[index].error  }}</span>
+                </div>
             </div>
+
+            <button class="delete-button" (click)="removeFile(index)">
+                <i class="fa-solid fa-trash"></i>
+            </button>
         </div>
-        <div #errorWrapper class="preview-wrapper">
-            <span *ngIf="filesWithErrors.length > 0" class="errors">{{ filesWithErrors.length }} files with errors that will not be uploaded</span>
-            <div *ngFor="let file of filesWithErrors" class="preview error">
-                <img [src]="generatePreviewUrl(file)">
-                <div>
-                    <div class="preview__name">{{file?.name}}</div>
-                    <div class="flex">
-                        <div class="preview__size">{{humanFileSize(file?.size)}}</div>
-                        <span>{{ file?.error  }}</span>
-                    </div>
+    </div>
+    <div #errorWrapper class="preview-wrapper error-wrapper">
+        <span *ngIf="filesWithErrors.length > 0" class="errors">{{ filesWithErrors.length }} files with errors that will not be uploaded</span>
+        <div *ngFor="let fileDetail of filesWithErrors" class="preview error">
+            <img [src]="generatePreviewUrl(fileDetail.file)">
+            <div>
+                <div class="preview-name">{{fileDetail.file.name}}</div>
+                <div class="flex">
+                    <small class="preview-size">{{humanFileSize(fileDetail.file.size)}}</small>
+                    <span>{{ fileDetail.error  }}</span>
                 </div>
             </div>
         </div>
