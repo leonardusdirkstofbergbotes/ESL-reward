@@ -2,6 +2,16 @@
 @import "src/scss/mixins.scss";
 
 .folder-wrapper {
-    border: 2px solid red;
-    margin-top: 5rem;
+    margin-top: 2rem;
+}
+
+.dropdown-item {
+    @include transition(background-color 0.3s ease-in-out);
+    padding: 0.5rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+
+    &:hover {
+        background-color: $grey-light;
+    }
 }

@@ -1,0 +1,28 @@
+<div class="file-manager">
+    <div class="flex-apart">
+        <app-file-bread-crumb [breadCrumbs]="breadCrumbData"></app-file-bread-crumb>
+    </div>
+    
+    <section>
+        <div *ngIf="breadCrumbData.length > 0" class="go-back">
+            <button class="empty-button">
+                <i class="fa-solid fa-circle-arrow-left"></i> 
+                <span>Go back</span>
+            </button>
+        </div>
+        <div class="mt-2">
+            <div *ngFor="let folder of openFolderData; let index = index" class="folder-wrapper">
+            
+                <div class="folder" (click)="openFolder(index)">
+                    <i class="fa-solid fa-folder"></i>
+                    <span>{{ folder.folderName }}</span>
+                </div>
+                <div class="files-wrapper">
+                    <div *ngFor="let file of folder.files" class="file">
+                        File
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

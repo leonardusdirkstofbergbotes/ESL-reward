@@ -13,7 +13,7 @@
 
     <app-modal (tabChanged)="currentTab = $event" [tabs]="formTabs" [activeTab]="currentTab" #groupCRUDModal title="Create new sticker group" subTitle="sticker groups are used to play games like the “sticker” game and “slots” game.  Select 10 stickers to create a sticker group">
         <div class="navigator-wrapper" *ngIf="currentTab === 1">
-            <app-sticker-navigator></app-sticker-navigator>
+            <app-file-manager></app-file-manager>
         </div>
 
         <div class="form" *ngIf="currentTab === 2">

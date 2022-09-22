@@ -1,0 +1,6 @@
+<div class="file-bread-crumbs">
+    <div class="crumb" *ngFor="let crumb of breadCrumbs; let isLast = last">
+        <span>{{ crumb }}</span>
+        <i *ngIf="!isLast" class="fa-solid fa-angle-right"></i>
+    </div>
+</div>

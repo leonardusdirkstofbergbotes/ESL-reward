@@ -5,13 +5,17 @@
         <div class="page-action-bar">
             <app-pill>1534 stickers</app-pill>
             <app-search-bar placeholder="search for stickers / folders"></app-search-bar>
-            <div class="far-right">
-                <app-button (click)="stickerModal.openModal()">Add stickers</app-button>
+            <div class="far-right relative">
+                <app-button (click)="addNewDropdown.toggle()">Add new</app-button>
+                <app-drop-down #addNewDropdown>
+                    <div (click)="stickerModal.openModal(); addNewDropdown.close()" class="dropdown-item">Stickers</div>
+                    <div class="dropdown-item">Folder</div>
+                </app-drop-down>
             </div>
         </div>
 
         <div class="folder-wrapper">
-            <app-sticker-navigator></app-sticker-navigator>
+            <app-file-manager></app-file-manager>
         </div>
     </div>
 

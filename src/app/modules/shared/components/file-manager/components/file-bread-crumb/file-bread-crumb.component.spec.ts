@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FolderComponent } from './folder.component';
+import { FileBreadCrumbComponent } from './file-bread-crumb.component';
 
-describe('FolderComponent', () => {
-  let component: FolderComponent;
-  let fixture: ComponentFixture<FolderComponent>;
+describe('FileBreadCrumbComponent', () => {
+  let component: FileBreadCrumbComponent;
+  let fixture: ComponentFixture<FileBreadCrumbComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FolderComponent ]
+      declarations: [ FileBreadCrumbComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(FolderComponent);
+    fixture = TestBed.createComponent(FileBreadCrumbComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

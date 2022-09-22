@@ -1,0 +1,15 @@
+@import "src/scss/colors.scss";
+@import "src/scss/mixins.scss";
+
+
+.file-bread-crumbs {
+    @include flexbox;
+    @include align-items(center);
+    gap: 0.5rem;
+    
+    .crumb {
+        @include flexbox;
+        @include align-items(center);
+        gap: 0.5rem;
+    }
+}

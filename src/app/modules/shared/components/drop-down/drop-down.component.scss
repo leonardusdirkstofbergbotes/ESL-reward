@@ -1,0 +1,28 @@
+@import "src/scss/colors.scss";
+@import "src/scss/mixins.scss";
+
+.dropdown {
+    @include standard-shadow;
+    @include transition(visibility 0.3s ease-in-out, opacity 0.3s ease-in-out, height 0.3s ease-in-out);
+    @include flexbox;
+    @include align-items(center);
+    gap: 1rem;
+    position: absolute;
+    border-radius: 0.5rem;
+    visibility: hidden;
+    opacity: 0;
+    background-color: $white;
+    min-width: 8rem;
+
+    &.open {
+        visibility: visible;
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .content {
+        @include flexbox;
+        @include flex-direction(column);
+        flex: 1;
+    }
+}

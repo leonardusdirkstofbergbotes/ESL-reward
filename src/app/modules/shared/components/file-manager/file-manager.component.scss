@@ -1,0 +1,48 @@
+@import "src/scss/colors.scss";
+@import "src/scss/mixins.scss";
+
+
+.file-manager {
+    padding: 0.5rem;
+    background-color: $grey-light;
+    border-radius: 0.5rem;
+    border: 1px solid $grey;
+
+    section {
+        // margin-top: 2rem;
+
+        .go-back {
+            margin-bottom: 0.7rem;
+
+            button {
+                @include flexbox;
+                @include align-items(center);
+                gap: 0.5rem;
+                @include transition(color 0.3s ease-in-out);
+                cursor: pointer;
+
+                &:hover {
+                    color: $tooltip-color;
+                }
+            }
+        }
+    
+        .folder-wrapper {
+            @include flexbox;
+            @include flex-direction(column);
+            row-gap: 1rem;
+            margin-left: 0.5rem;
+        
+            .folder {
+                @include flexbox;
+                @include align-items(center);
+                gap: 0.5rem;
+        
+                svg {
+                    color: $folder-color;
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    }
+}

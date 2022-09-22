@@ -5,7 +5,7 @@ html, body {
     height: 100%; 
 }
 
-html, body , button {
+html, body , button, input {
     font-family: 'Open Sans', sans-serif;
     font-family: 'Poppins', sans-serif;
 }
@@ -32,6 +32,10 @@ h1 {
 
 // re-usable classes
 
+.mt-2 {
+    margin-top: 2rem;
+}
+
 .empty-button {
     background-color: transparent;
     outline: none;
@@ -46,6 +50,17 @@ h1 {
     @include flexbox;
     @include align-items(center);
     gap: 1rem;
+}
+
+.flex-apart {
+    @include flexbox;
+    @include align-items(center);
+    @include justify-content(space-between);
+    gap: 1rem;
+}
+
+.relative {
+    position: relative;
 }
 
 .pointer {
