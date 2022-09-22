@@ -16,6 +16,7 @@ export class FileDropPoolComponent {
   @Input() maxFileSize: number = 5242880 // 5MB
   @Input() allowMultiple: boolean = true;
   @Input() maxFiles: number = 10;
+  @Input() existingFileNames: string[] = ['hover example.gif'];
   filesReadyForUpload: File[] = [];
   filesWithErrors: FileError[] = [];
   generalErrorMessage: string | null = null;
@@ -39,7 +40,6 @@ export class FileDropPoolComponent {
         if (this.typeOfFileValid(file.type)) {
           if (this.sizeOfFileValid(file.size)) {
             if (!this.isFileAlreadyInArray(file, 'uploadFiles')) {
-              // TODO: also check if file.name doesn't already exists in the database
               this.addProcessedFile(file);
             }              
           } else {
@@ -82,15 +82,26 @@ export class FileDropPoolComponent {
   }
 
   isFileAlreadyInArray (fileToBeAdded: File, arrayToFilter: string): boolean {
+    console.log(fileToBeAdded);
     let fileAlreadyInArray: boolean = false;
 
     if (arrayToFilter === 'uploadFiles') {
+      // NOTE: This is checking based on original name and possible new name;
       Array.from(this.filesReadyForUpload).forEach(file => {
         if (file.name == fileToBeAdded.name) {
           fileAlreadyInArray = true;
         }
       });
-  
+
+      if (!fileAlreadyInArray && this.existingFileNames.length > 0) {
+        Array.from(this.existingFileNames).forEach((fileName: string) => {
+          if (fileName == fileToBeAdded.name) {
+            fileAlreadyInArray = true;
+            this.addFileToErrorArray(fileToBeAdded, `A file with the name "${fileToBeAdded.name}" already exists`);
+          }
+        });
+      }
+
       return fileAlreadyInArray;
     }
     else {
