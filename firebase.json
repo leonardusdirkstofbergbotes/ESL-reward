@@ -3,7 +3,7 @@
     "rules": "database.rules.json"
   },
   "hosting": {
-    "public": "dist",
+    "public": "dist/esl-reward",
     "ignore": [
       "firebase.json",
       "**/.*",
