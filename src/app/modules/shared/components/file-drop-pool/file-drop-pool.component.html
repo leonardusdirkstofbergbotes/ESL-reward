@@ -12,6 +12,7 @@
     <div *ngIf="filesReadyForUpload.length > 0" class="preview-wrapper">
         <div class="files-counter" *ngIf="allowMultiple && filesReadyForUpload.length > 0">
             <span>{{filesReadyForUpload.length}} / {{maxFiles}} files ready for upload</span>
+            <span class="pointer" (click)="resetForm()">Clear all files</span>
         </div>
         <div *ngFor="let file of filesReadyForUpload; let index = index" class="preview">
             <img [src]="generatePreviewUrl(file)" alt="preview image" #previewImage>
