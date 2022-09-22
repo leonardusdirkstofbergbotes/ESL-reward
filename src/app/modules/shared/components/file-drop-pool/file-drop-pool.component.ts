@@ -16,7 +16,7 @@ export class FileDropPoolComponent {
   @Input() maxFileSize: number = 5242880 // 5MB
   @Input() allowMultiple: boolean = true;
   @Input() maxFiles: number = 10;
-  @Input() existingFileNames: string[] = ['hover example.gif'];
+  @Input() existingFileNames: string[] = [];
   filesReadyForUpload: File[] = [];
   filesWithErrors: FileError[] = [];
   generalErrorMessage: string | null = null;
