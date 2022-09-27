@@ -9,13 +9,17 @@ if (environment.production) {
   enableProdMode();
 }
 
-// Import the functions you need from the SDKs you need
+// firebase related
 import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getDatabase } from "firebase/database";
 
 // Initialize Firebase
 const app = initializeApp(FirebaseConfig);
+
+// Initialize Realtime Database and get a reference to the service
+const database = getDatabase(app);
+
+
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));

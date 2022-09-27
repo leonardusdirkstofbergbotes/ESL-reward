@@ -1,4 +1,4 @@
-<div class="snack-bar" [class.open]="showSnackBar">
+<div class="snack-bar" [class.open]="showSnackBar" [class]="type">
     <span>{{text}}</span>
     <div (click)="showSnackBar = false">
         <i class="fa-solid fa-xmark"></i>

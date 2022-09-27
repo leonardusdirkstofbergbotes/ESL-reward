@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-stickers.component.scss']
 })
 export class MyStickersComponent implements OnInit {
-
+  
   constructor() { }
 
   ngOnInit(): void {

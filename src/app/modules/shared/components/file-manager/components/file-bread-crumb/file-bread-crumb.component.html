@@ -1,6 +1,8 @@
 <div class="file-bread-crumbs">
-    <div class="crumb" *ngFor="let crumb of breadCrumbs; let isLast = last">
-        <span>{{ crumb }}</span>
-        <i *ngIf="!isLast" class="fa-solid fa-angle-right"></i>
+    <div class="crumb" [class.last]="isLast" *ngFor="let crumb of breadCrumbs; let isLast = last">
+        <i class="fa-solid fa-house" *ngIf="crumb === 'root'"></i>
+        <i *ngIf="crumb !== 'root'" class="fa-solid fa-folder"></i>
+        <span *ngIf="crumb !== 'root'">{{ crumb }}</span>
+        <i *ngIf="!isLast" class="fa-solid fa-angle-right step"></i>
     </div>
 </div>

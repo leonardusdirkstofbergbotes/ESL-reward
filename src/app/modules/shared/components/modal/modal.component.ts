@@ -11,7 +11,9 @@ export class ModalComponent implements OnInit {
   @Input() subTitle: string = '';
   @Input() tabs: string[] = [];
   @Input() activeTab: number = 0;
+  @Input() closeAfterConfirmed: boolean = true;
   @Output() tabChanged = new EventEmitter<number>();
+  @Output() confirmButtonClicked = new EventEmitter<any>();
 
   open: boolean = false;
   lastTab: number = 0;
@@ -29,6 +31,11 @@ export class ModalComponent implements OnInit {
   closeModal () {
     this.open = false;
     this.resetTabData();
+  }
+
+  confirmButtonHandler () {
+    this.confirmButtonClicked.emit();
+    if (this.closeAfterConfirmed) this.closeModal();
   }
 
   nextTab () {

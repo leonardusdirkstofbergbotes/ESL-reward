@@ -4,8 +4,14 @@
         <app-tool-tip *ngIf="tooltipText" [tooltipText]="tooltipText"></app-tool-tip>
     </label>
 
-    <div class="input-box">
+    <div class="input-box" [class.error]="control.invalid && control.touched">
         <ng-content select=".before-input-content"></ng-content>
         <input [type]="type" [placeholder]="placeholder" [formControl]="$any(control)" [name]="name" />
+        <small *ngIf="control.invalid && control.touched">
+            <div *ngIf="control.hasError('required')">Please make sure this field above is filled in</div>
+            <div *ngIf="control.hasError('minlength')">This field needs to be at least {{ control.errors?.['minlength'].requiredLength }} characters long</div>
+            <div *ngIf="control.hasError('min')">The number above needs to more than or equal to {{ control.errors?.['min'].min }}</div>
+            <div *ngIf="control.hasError('custom')">{{ control.errors?.['custom'].message }}</div>
+        </small>
     </div>
 </div>

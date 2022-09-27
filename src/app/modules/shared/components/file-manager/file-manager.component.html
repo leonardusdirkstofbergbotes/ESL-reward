@@ -1,28 +1,42 @@
 <div class="file-manager">
+    <div class="loading-overlay" [class.open]="loading">
+        <div class="spinner">
+            <i class="fa-solid fa-circle-notch"></i>
+        </div>
+    </div>
+
     <div class="flex-apart">
-        <app-file-bread-crumb [breadCrumbs]="breadCrumbData"></app-file-bread-crumb>
+        <app-file-bread-crumb [breadCrumbs]="dummyBreadCrumbData"></app-file-bread-crumb>
+
+        <app-button type="secondary" (click)="newFolderModal.openModal()">New folder</app-button>
     </div>
     
     <section>
         <div *ngIf="breadCrumbData.length > 0" class="go-back">
-            <button class="empty-button">
+            <button class="empty-button" (click)="back()">
                 <i class="fa-solid fa-circle-arrow-left"></i> 
                 <span>Go back</span>
             </button>
         </div>
         <div class="mt-2">
-            <div *ngFor="let folder of openFolderData; let index = index" class="folder-wrapper">
+            <div *ngFor="let folder of folders; let index = index" class="folder-wrapper">
             
-                <div class="folder" (click)="openFolder(index)">
+                <div class="folder" (click)="getFolderData(folder.folderId)">
                     <i class="fa-solid fa-folder"></i>
                     <span>{{ folder.folderName }}</span>
                 </div>
                 <div class="files-wrapper">
-                    <div *ngFor="let file of folder.files" class="file">
+                    <!-- <div *ngFor="let file of folder.files" class="file">
                         File
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
     </section>
+
+    <app-modal #newFolderModal (confirmButtonClicked)="addNewFolder()" title="Add new folder" subTitle="You can create a new folder in the current directory">
+        <div class="new-folder">
+            <app-input [control]="newFolderName">Name of new folder</app-input>
+        </div>
+    </app-modal>
 </div>

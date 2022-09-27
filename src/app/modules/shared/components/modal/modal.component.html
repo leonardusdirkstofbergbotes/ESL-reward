@@ -18,5 +18,6 @@
     <div class="modal-buttons">
         <app-button (click)="previousTab()" type="secondary" *ngIf="tabs.length > 0 && activeTab > 1">Previous</app-button>
         <app-button (click)="nextTab()" class="right" *ngIf="tabs.length > 0 && activeTab !== lastTab">Next</app-button>
+        <app-button (click)="confirmButtonHandler()" class="far-right" *ngIf="tabs.length == 0 || activeTab == tabs.length">Confirm</app-button>
     </div>
 </div>
