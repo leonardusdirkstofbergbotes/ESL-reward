@@ -6,19 +6,32 @@
     @include flexbox;
     @include align-items(center);
     gap: 0.5rem;
-    margin-bottom: 1rem;
     
     .crumb {
         @include flexbox;
         @include align-items(center);
         gap: 0.5rem;
+        
+        span {
+            font-size: 0.7rem;
+        }
 
         &.last {
             font-weight: 700;
+            pointer-events: none;
+            
+
+            span {
+                font-size: 1rem;
+            }
+
+            svg {
+                color: $tooltip-color;
+            }
         }
 
         svg {
-            color: $tooltip-color;
+            color: $grey;
         }
 
         .step {

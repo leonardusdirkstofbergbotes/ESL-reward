@@ -1,8 +1,8 @@
-<div class="file-bread-crumbs">
+<div class="file-bread-crumbs" *ngIf="breadCrumbs.length > 2">
     <div class="crumb" [class.last]="isLast" *ngFor="let crumb of breadCrumbs; let isLast = last">
-        <i class="fa-solid fa-house" *ngIf="crumb === 'root'"></i>
-        <i *ngIf="crumb !== 'root'" class="fa-solid fa-folder"></i>
-        <span *ngIf="crumb !== 'root'">{{ crumb }}</span>
+        <i (click)="gotoFolder(crumb)" class="fa-solid fa-house pointer" *ngIf="crumb.folderName === 'root'"></i>
+        <i *ngIf="crumb.folderName !== 'root'" class="fa-solid fa-folder-open"></i>
+        <span (click)="gotoFolder(crumb)" class="pointer" [class.last]="isLast">{{ crumb.folderName }}</span>
         <i *ngIf="!isLast" class="fa-solid fa-angle-right step"></i>
     </div>
 </div>

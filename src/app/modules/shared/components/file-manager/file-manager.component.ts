@@ -16,13 +16,11 @@ export class FileManagerComponent implements OnInit {
   folders: Folder[] = [];
   files: File[] = [];
   loading: boolean = false;
-  breadCrumbData: string[] = ['root'];
+  breadCrumbData: Folder[] = [];
   existingFolderName: string[] = [];
-  dummyBreadCrumbData: string[] = ['root', 'test', 'folder 1'];
   newFolderName: FormControl = new FormControl("", [Validators.required]);
   @ViewChild('newFolderModal') newFolderModal!: ModalComponent;
-  openFolderId: string = 'root';
-  previousFolderId!: string;
+  openFolderData!: Folder;
 
   constructor(
     private _firebase: FirebaseWrapperService,
@@ -35,23 +33,23 @@ export class FileManagerComponent implements OnInit {
 
   async getData (path: string) {
     this.loading = true;
-    this.getFolderData(path);
+    this.getFolderData({folderName: "root", folderId: 'root', parentFolderId: 'root'});
     this.getFileData(path).then(() => {
       this.loading = false;
     });
   }
 
-  async getFolderData (folderId: string) {
-    let folderResponse: any[] = await this._firebase.getData('user-uid-1', 'folders', folderId);
+  async getFolderData (folderData: Folder) {
+    let folderResponse: any[] = await this._firebase.getData('user-uid-1', 'folders', folderData.folderId);
 
-    let folderData = [];
+    let newFolderData = [];
     for (let [firebaseUID, folder] of Object.entries(folderResponse)) {
-      folderData.push({...folder, parentFolderId: firebaseUID});
+      newFolderData.push({...folder, parentFolderId: firebaseUID});
     }
 
-    this.folders = folderData;
-    this.previousFolderId = this.openFolderId;
-    this.openFolderId = folderId;
+    this.folders = newFolderData;
+    this.openFolderData = folderData;
+    this.setBreadCrumbData();
   }
 
   async getFileData (folderId: string) {
@@ -68,7 +66,7 @@ export class FileManagerComponent implements OnInit {
     }
     else {
       this.loading = true;
-      this._firebase.createNewFolder('user-uid-1', this.newFolderName.value, this.openFolderId);
+      this._firebase.createNewFolder('user-uid-1', this.newFolderName.value, this.openFolderData.folderId);
       this.newFolderModal.closeModal();
       this.loading = false;
       this.newFolderName.reset();
@@ -87,8 +85,31 @@ export class FileManagerComponent implements OnInit {
   }
 
   back () {
-    // this should loop out of the array
-    this.getFolderData(this.previousFolderId);
+    let lastBreadcrumbIndex = this.breadCrumbData.length - 1;
+    this.getFolderData(this.breadCrumbData[lastBreadcrumbIndex - 1]);
+  }
+
+  setBreadCrumbData () {
+    let exists: boolean = false;
+    let keyToReset!: number;
+
+    for (let [index, folder] of Object.entries(this.breadCrumbData)) {
+      if (folder.folderId === this.openFolderData.folderId) {
+        exists = true;
+        keyToReset = Number(index);
+      }
+    }
+
+    if (exists) {
+      this.breadCrumbData = this.breadCrumbData.filter((_folder, index) => {
+        return index <= keyToReset;
+      });
+
+      console.log(this.breadCrumbData);
+    }
+    else {
+      this.breadCrumbData.push(this.openFolderData);
+    }
   }
 
 }

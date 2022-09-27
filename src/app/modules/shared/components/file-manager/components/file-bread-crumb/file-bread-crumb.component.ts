@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Folder } from 'src/app/models/folder';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-file-bread-crumb',
@@ -7,11 +8,16 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class FileBreadCrumbComponent implements OnInit {
 
-  @Input() breadCrumbs: string[] = [];
+  @Input() breadCrumbs: Folder[] = [];
+  @Output() crumbClicked = new EventEmitter<Folder>();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  gotoFolder (folder: Folder) {
+    this.crumbClicked.emit(folder);
   }
 
 }
