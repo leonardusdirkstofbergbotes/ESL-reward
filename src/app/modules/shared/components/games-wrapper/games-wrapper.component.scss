@@ -1,0 +1,25 @@
+@import "src/scss/colors.scss";
+@import "src/scss/mixins.scss";
+
+.games-wrapper {
+    background-image: url('/assets/images/games/games-background.webp');
+    background-size: cover;
+    height: -webkit-fill-available;
+    padding: 0 2rem;
+
+    .header {
+        @include flexbox;
+        @include align-items(center);
+        gap: 10rem;
+        position: relative;
+
+        h1 {
+            font-size: 4rem;
+            margin: 0;
+        }
+    }
+
+    .content {
+        margin-top: 2rem;
+    }
+}

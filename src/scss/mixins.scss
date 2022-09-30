@@ -11,6 +11,12 @@
 	-moz-box-shadow: 1px -1px 10px -2px rgba(253, 1, 1, 0.212);
 }
 
+@mixin board-shadow {
+	box-shadow: 1px -1px 10px -2px $base;
+	-webkit-box-shadow: 1px -1px 10px -2px $base;
+	-moz-box-shadow: 1px -1px 10px -2px $base;
+}
+
 // Box
 @mixin box {
     @include standard-shadow;

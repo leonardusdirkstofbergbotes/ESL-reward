@@ -1,3 +1,4 @@
+import { HelperFunctionsService } from './../../services/helpers/helper-functions.service';
 import { FileNameChange } from './models/file-name-changes';
 import { Component, Input, ViewChild, ElementRef } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -22,7 +23,10 @@ export class FileDropPoolComponent {
   generalErrorMessage: string | null = null;
   fileNameChanges: FileNameChange[] = [];
 
-  constructor(public domSanitizer: DomSanitizer) {}
+  constructor(
+    public domSanitizer: DomSanitizer,
+    public helper: HelperFunctionsService
+  ) {}
 
   dropHandler (event: any) {    
     event.preventDefault();
@@ -43,7 +47,7 @@ export class FileDropPoolComponent {
               this.addProcessedFile(file);
             }              
           } else {
-            this.addFileToErrorArray(file, `File too big (Max allowed size: ${this.humanFileSize(this.maxFileSize)})`);
+            this.addFileToErrorArray(file, `File too big (Max allowed size: ${this.helper.humanFileSize(this.maxFileSize)})`);
           }
         } else {
           this.addFileToErrorArray(file, "File format is not valid");
@@ -82,7 +86,6 @@ export class FileDropPoolComponent {
   }
 
   isFileAlreadyInArray (fileToBeAdded: File, arrayToFilter: string): boolean {
-    console.log(fileToBeAdded);
     let fileAlreadyInArray: boolean = false;
 
     if (arrayToFilter === 'uploadFiles') {
@@ -157,10 +160,6 @@ export class FileDropPoolComponent {
     }
   }
 
-  generatePreviewUrl (file: File) {
-    return this.domSanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(file));
-  }
-
   removeFile (index: number) {
     this.filesReadyForUpload = Array.from(this.filesReadyForUpload).filter((file, fileIndex) => {
       return fileIndex != index;
@@ -179,9 +178,18 @@ export class FileDropPoolComponent {
     this.clearOriginalFileInput();
   }
 
-  humanFileSize (byteSize?: any) {
-    if (byteSize > 1000000) return (byteSize / 1048576).toFixed(1) + ' Mb';
-    else return (byteSize / 1024).toFixed(1) + ' Kb';
-  }
+  getFiles () {
+    let finalFileArray = [];
 
+    for (let [index, file] of Object.entries(this.filesReadyForUpload)) {
+      let fileExtension = file.name.split('.').pop();
+      let newName = this.fileNameChanges[Number(index)] + fileExtension!;
+      
+      // TODO: add the new name;
+
+      finalFileArray.push(file);
+    }
+
+    return finalFileArray;
+  }
 }

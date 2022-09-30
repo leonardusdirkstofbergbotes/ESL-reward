@@ -1,0 +1,21 @@
+@import "src/scss/colors.scss";
+@import "src/scss/mixins.scss";
+
+.sticker-collection {
+    @include flexbox;
+    @include align-items(flex-start);
+    gap: 2rem;
+    width: 100%;
+
+    .list {
+        width: 15%;
+        border: 1px solid blue;
+    }
+
+    .board {
+        border: 3px solid $base;
+        @include board-shadow;
+        border-radius: 0.5rem;
+        width: 80%;
+    }
+}

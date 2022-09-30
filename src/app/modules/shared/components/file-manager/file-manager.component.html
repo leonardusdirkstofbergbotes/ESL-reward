@@ -19,21 +19,21 @@
             <app-button type="secondary" (click)="newFolderModal.openModal()">New folder</app-button>
         </div>
         
-        <section>
-            <div class="mt-1">
-                <div *ngFor="let folder of folders; let index = index" class="folder-wrapper">
-                
-                    <div class="folder" (click)="getFolderData(folder)">
-                        <i class="fa-solid fa-folder"></i>
-                        <span>{{ folder.folderName }}</span>
-                    </div>
-                    <div class="files-wrapper">
-                        <!-- <div *ngFor="let file of folder.files" class="file">
-                            File
-                        </div> -->
+        <section class="mt-1">
+                <div *ngFor="let folder of folders; let index = index" class="folder" (click)="getFolderData(folder)">
+                    <i class="fa-solid fa-folder"></i>
+                    <span>{{ folder.folderName }}</span>
+                </div>
+
+                <div class="files-wrapper">
+                    <div *ngFor="let file of files" class="file">
+                        <img [src]="helper.generatePreviewUrl(file)">
+                        <div>
+                            <span>{{ file.name }}</span>
+                            <small>{{ helper.humanFileSize(file.size) }}</small>
+                        </div>
                     </div>
                 </div>
-            </div>
         </section>
 
         <app-modal #newFolderModal (confirmButtonClicked)="addNewFolder()" title="Add new folder" subTitle="You can create a new folder in the current directory">

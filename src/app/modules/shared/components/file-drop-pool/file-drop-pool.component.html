@@ -15,14 +15,14 @@
             <span class="pointer" (click)="resetForm()">Clear all files</span>
         </div>
         <div *ngFor="let file of filesReadyForUpload; let index = index" class="preview">
-            <img [src]="generatePreviewUrl(file)" alt="preview image" #previewImage>
+            <img [src]="helper.generatePreviewUrl(file)" alt="preview image" #previewImage>
 
             <div class="preview-details">
                 <div class="preview-name">
                     <input type="text" [value]="fileNameChanges[index].newName" (change)="updateName(index, $event)" />
                 </div>
                 <div class="flex">
-                    <small class="preview-size">{{humanFileSize(file.size)}}</small>
+                    <small class="preview-size">{{ helper.humanFileSize(file.size) }}</small>
                     <span class="errors">{{ fileNameChanges[index].error  }}</span>
                 </div>
             </div>
@@ -35,11 +35,11 @@
     <div #errorWrapper class="preview-wrapper error-wrapper">
         <span *ngIf="filesWithErrors.length > 0" class="errors">{{ filesWithErrors.length }} files with errors that will not be uploaded</span>
         <div *ngFor="let fileDetail of filesWithErrors" class="preview error">
-            <img [src]="generatePreviewUrl(fileDetail.file)">
+            <img [src]="helper.generatePreviewUrl(fileDetail.file)">
             <div>
                 <div class="preview-name">{{fileDetail.file.name}}</div>
                 <div class="flex">
-                    <small class="preview-size">{{humanFileSize(fileDetail.file.size)}}</small>
+                    <small class="preview-size">{{ helper.humanFileSize(fileDetail.file.size) }}</small>
                     <span>{{ fileDetail.error  }}</span>
                 </div>
             </div>

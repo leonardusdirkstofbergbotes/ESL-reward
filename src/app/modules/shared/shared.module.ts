@@ -19,6 +19,7 @@ import { FileDropPoolComponent } from './components/file-drop-pool/file-drop-poo
 import { FileManagerComponent } from './components/file-manager/file-manager.component';
 import { FileBreadCrumbComponent } from './components/file-manager/components/file-bread-crumb/file-bread-crumb.component';
 import { DropDownComponent } from './components/drop-down/drop-down.component';
+import { GamesWrapperComponent } from './components/games-wrapper/games-wrapper.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { DropDownComponent } from './components/drop-down/drop-down.component';
     FileDropPoolComponent,
     FileManagerComponent,
     FileBreadCrumbComponent,
-    DropDownComponent
+    DropDownComponent,
+    GamesWrapperComponent
   ],
   imports: [
     CommonModule,
@@ -58,7 +60,8 @@ import { DropDownComponent } from './components/drop-down/drop-down.component';
     StickerGroupComponent,
     FileDropPoolComponent,
     FileManagerComponent,
-    DropDownComponent
+    DropDownComponent,
+    GamesWrapperComponent
   ]
 })
 export class SharedModule { }

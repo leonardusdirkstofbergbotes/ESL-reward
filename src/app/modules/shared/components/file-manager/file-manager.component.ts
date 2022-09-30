@@ -1,7 +1,9 @@
+import { HelperFunctionsService } from './../../services/helpers/helper-functions.service';
+import { S3Service } from './../../services/s3/s3.service';
+import { FileManagerService } from './file-manager.service';
 import { SnackBarService } from './../snack-bar/snack-bar.service';
 import { ModalComponent } from './../modal/modal.component';
 import { FormControl, Validators } from '@angular/forms';
-import { push } from 'firebase/database';
 import { FirebaseWrapperService } from './../../services/firebase/firebase-wrapper.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Folder } from 'src/app/models/folder';
@@ -24,22 +26,22 @@ export class FileManagerComponent implements OnInit {
 
   constructor(
     private _firebase: FirebaseWrapperService,
-    private _snackbar: SnackBarService
+    private _snackbar: SnackBarService,
+    private _fileManager: FileManagerService,
+    private _awsS3: S3Service,
+    public helper: HelperFunctionsService
   ) {}
 
   ngOnInit(): void {
     this.getData("root");
   }
 
-  async getData (path: string) {
-    this.loading = true;
+  getData (path: string) {
     this.getFolderData({folderName: "root", folderId: 'root', parentFolderId: 'root'});
-    this.getFileData(path).then(() => {
-      this.loading = false;
-    });
   }
 
   async getFolderData (folderData: Folder) {
+    this.loading = true;
     let folderResponse: any[] = await this._firebase.getData('user-uid-1', 'folders', folderData.folderId);
 
     let newFolderData = [];
@@ -49,11 +51,16 @@ export class FileManagerComponent implements OnInit {
 
     this.folders = newFolderData;
     this.openFolderData = folderData;
+    this._fileManager.changeFolder(folderData);
     this.setBreadCrumbData();
+
+    
+    await this.getFileData('sdfsdf');
+    this.loading = false;
   }
 
   async getFileData (folderId: string) {
-    let files: any[] = await this._firebase.getData('user-uid-1', 'files', folderId) ?? [];
+    this.files = await this._awsS3.getFilesInsideFolder('user-uid-1', this.openFolderData.folderId);
   }
 
   openFolder (folderId: string) {
